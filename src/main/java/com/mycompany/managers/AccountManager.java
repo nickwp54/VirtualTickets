@@ -4,9 +4,9 @@
  */
 package com.mycompany.managers;
 
-//import com.mycompany.entities.Photo;
+import com.mycompany.entities.Photo;
 import com.mycompany.entities.User;
-//import com.mycompany.facades.PhotoFacade;
+import com.mycompany.facades.PhotoFacade;
 import com.mycompany.facades.UserFacade;
 import java.io.Serializable;
 import java.math.BigInteger;

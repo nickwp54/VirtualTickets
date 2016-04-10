@@ -6,6 +6,7 @@ package com.mycompany.entities;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -42,6 +43,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "User.findByCcExMonth", query = "SELECT u FROM User u WHERE u.ccExMonth = :ccExMonth"),
     @NamedQuery(name = "User.findByCcExYear", query = "SELECT u FROM User u WHERE u.ccExYear = :ccExYear")})
 public class User implements Serializable {
+
+    @OneToMany(mappedBy = "userId")
+    private Collection<Photo> photoCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -226,6 +230,15 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "com.mycompany.entities.User[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Photo> getPhotoCollection() {
+        return photoCollection;
+    }
+
+    public void setPhotoCollection(Collection<Photo> photoCollection) {
+        this.photoCollection = photoCollection;
     }
     
 }
